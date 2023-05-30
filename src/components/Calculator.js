@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './calculator.css';
 import ButtonsSection from './ButtonsSection';
 
 function Calculator() {
+  const [calculate, setCalculate] = useState(0);
   const handleValue = (e) => {
-    console.log(e.target.textContent);
+    if (calculate === 0) {
+      setCalculate(e.target.textContent);
+    } else {
+      setCalculate((lastNumber) => lastNumber + e.target.textContent);
+    }
   };
   return (
     <div className="calculator-container">
-      <div className="div-result">0</div>
+      <div className="div-result">{calculate}</div>
       <ButtonsSection onClick={handleValue} />
     </div>
   );
