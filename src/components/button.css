@@ -1,0 +1,14 @@
+.button {
+  background-color: rgba(230, 230, 230, 0.362);
+  border: 1px solid rgb(216, 216, 216);
+}
+
+.buttons-calculator {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  height: 95%;
+}
+
+#button-0 {
+  grid-column: 1 / span 2;
+}
