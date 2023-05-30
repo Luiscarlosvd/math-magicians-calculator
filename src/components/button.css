@@ -1,0 +1,29 @@
+.button {
+  background-color: rgba(230, 230, 230, 0.362);
+  border: 1px solid rgb(216, 216, 216);
+  cursor: pointer;
+  font-size: 1.2em;
+  border-radius: 3px;
+}
+
+.button:hover {
+  background-color: #d5d5d537;
+}
+
+.buttons-calculator {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  height: 88%;
+}
+
+#button-0 {
+  grid-column: 1 / span 2;
+}
+
+.button-orange {
+  background-color: #ffa13dfe;
+}
+
+.button-orange:hover {
+  background-color: #ffa13d9c;
+}

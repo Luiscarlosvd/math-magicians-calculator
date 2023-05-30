@@ -62,7 +62,7 @@ A simple calculator project with different sections using React.
 
 ### Key Features <a name="key-features"></a>
 
-- **Set up config files**
+- **Calculator structure**
 - **Great Description of the project**
 - **No linters errors**
 
@@ -138,7 +138,7 @@ To run tests, run the following command:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- **Create calculator structure 😁**
+- **Create calculator Logic 😁**
 - **Add Sections 👌**
 - **Add calculator functionalities 😎**
 
