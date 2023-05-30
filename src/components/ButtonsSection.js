@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const ButtonsSection = ({ onClick }) => (
   <div className="buttons-calculator">
-    <button type="button" className="button">AC</button>
+    <button type="button" onClick={onClick} className="button">AC</button>
     <button type="button" onClick={onClick} className="button">+/-</button>
     <button type="button" onClick={onClick} className="button">%</button>
     <button type="button" onClick={onClick} className="button button-orange">÷</button>
