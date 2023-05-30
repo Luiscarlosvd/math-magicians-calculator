@@ -1,0 +1,11 @@
+.calculator-container {
+  background-color: #d5d5d5;
+  width: 70%;
+  margin: 0 auto;
+  padding: 1em;
+  margin-top: 3em;
+}
+
+.div-result {
+  text-align: right;
+}
