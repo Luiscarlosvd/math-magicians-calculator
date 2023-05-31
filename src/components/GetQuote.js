@@ -14,6 +14,7 @@ const GetQuote = () => {
   useEffect(() => {
     const source = axios.CancelToken.source();
     setIsLoading(true);
+    setError(false);
     axios.get('https://api.api-ninjas.com/v1/quotes?category=movies', { headers, cancelToken: source.token })
       .then((resp) => {
         setQuote(resp.data[0]);
@@ -28,12 +29,14 @@ const GetQuote = () => {
   }, []);
   return (
     <>
-      {error ? (
-        <p className="error-text">Sorry... We are experiencing some errors..</p>
+      {isLoading ? (
+        <div className="quote">
+          <p className="loading-text">Loading ...</p>
+        </div>
       ) : (
         <div className="quote">
-          {isLoading ? (
-            <p className="loading-text">Loading ...</p>
+          {error ? (
+            <p className="error-text">Sorry... We are experiencing some errors..</p>
           ) : (
             <>
               <p className="quote-text">
