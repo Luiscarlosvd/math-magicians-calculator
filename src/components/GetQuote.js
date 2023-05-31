@@ -9,19 +9,19 @@ const headers = {
 const GetQuote = () => {
   const [quote, setQuote] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
-    try {
-      axios.get('https://api.api-ninjas.com/v1/quotes?category=movies', { headers })
-        .then((resp) => {
-          setQuote(resp.data[0]);
-          setIsLoading(false);
-        });
-    } catch (error) {
-      console.log(error);
-    }
-  }, []);
+    axios.get('https://api.api-ninjas.com/v1/quotes?category=movies', { headers })
+      .then((resp) => {
+        setQuote(resp.data[0]);
+        setIsLoading(false);
+      }).catch(() => {
+        setIsLoading(false);
+        setError(true);
+      });
+  }, [headers]);
   return (
     <div className="quote">
       {isLoading ? (
@@ -32,6 +32,13 @@ const GetQuote = () => {
           <p>{quote.author}</p>
         </>
       )}
+      <>
+        {error ? (
+          <p>Sorry... we are experiencing some errors.</p>
+        ) : (
+          false
+        )}
+      </>
     </div>
   );
 };
