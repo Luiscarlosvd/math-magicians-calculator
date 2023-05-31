@@ -12,8 +12,9 @@ const GetQuote = () => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
+    const source = axios.CancelToken.source();
     setIsLoading(true);
-    axios.get('https://api.api-ninjas.com/v1/quotes?category=movies', { headers })
+    axios.get('https://api.api-ninjas.com/v1/quotes?category=movies', { headers, cancelToken: source.token })
       .then((resp) => {
         setQuote(resp.data[0]);
         setIsLoading(false);
@@ -21,25 +22,32 @@ const GetQuote = () => {
         setIsLoading(false);
         setError(true);
       });
-  }, [headers]);
+    return () => {
+      source.cancel();
+    };
+  }, []);
   return (
-    <div className="quote">
-      {isLoading ? (
-        <p>Loading ...</p>
+    <>
+      {error ? (
+        <p className="error-text">Sorry... We are experiencing some errors..</p>
       ) : (
-        <>
-          <h3>{quote.quote}</h3>
-          <p>{quote.author}</p>
-        </>
+        <div className="quote">
+          {isLoading ? (
+            <p className="loading-text">Loading ...</p>
+          ) : (
+            <>
+              <p className="quote-text">
+                &ldquo;
+                {quote.quote}
+                &rdquo;
+                {' - '}
+                {quote.author}
+              </p>
+            </>
+          )}
+        </div>
       )}
-      <>
-        {error ? (
-          <p>Sorry... we are experiencing some errors.</p>
-        ) : (
-          false
-        )}
-      </>
-    </div>
+    </>
   );
 };
 
