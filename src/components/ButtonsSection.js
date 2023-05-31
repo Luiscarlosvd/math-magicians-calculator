@@ -22,7 +22,7 @@ const ButtonsSection = ({ onClick }) => (
     <button type="button" onClick={onClick} className="button button-orange">+</button>
     <button type="button" onClick={onClick} className="button" id="button-0">0</button>
     <button type="button" onClick={onClick} className="button">.</button>
-    <button type="button" className="button button-orange">=</button>
+    <button type="button" onClick={onClick} className="button button-orange">=</button>
   </div>
 );
 
