@@ -8,17 +8,30 @@ const headers = {
 
 const GetQuote = () => {
   const [quote, setQuote] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    axios.get('https://api.api-ninjas.com/v1/quotes?category=movies', { headers })
-      .then((resp) => setQuote(resp.data[0]));
+    setIsLoading(true);
+    try {
+      axios.get('https://api.api-ninjas.com/v1/quotes?category=movies', { headers })
+        .then((resp) => {
+          setQuote(resp.data[0]);
+          setIsLoading(false);
+        });
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
-
-  console.log(quote.quote);
   return (
     <div className="quote">
-      <h3>{quote.quote}</h3>
-      <p>{quote.author}</p>
+      {isLoading ? (
+        <p>Loading ...</p>
+      ) : (
+        <>
+          <h3>{quote.quote}</h3>
+          <p>{quote.author}</p>
+        </>
+      )}
     </div>
   );
 };
