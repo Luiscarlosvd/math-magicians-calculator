@@ -1,0 +1,13 @@
+.home-container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.home-container h1 {
+  margin: 0.6em auto;
+}
+
+.home-container p {
+  line-height: 1.8em;
+  font-size: 1.1em;
+}
