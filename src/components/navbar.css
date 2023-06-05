@@ -1,8 +1,17 @@
 .header-layout {
   display: flex;
   justify-content: space-between;
-  padding: 2em;
+  padding: 0.8em 4em;
   align-items: center;
+  border-bottom: 1px solid #efefef98;
+  box-shadow: rgba(143, 143, 143, 0.251) 0 3px 8px;
+}
+
+.header-layout h1 {
+  color: rgba(0, 0, 0, 0.6);
+  text-shadow:
+    2px 4px 4px rgba(0, 0, 0, 0.2),
+    0 -5px 30px rgba(255, 255, 255, 0.3);
 }
 
 nav {
@@ -18,5 +27,10 @@ nav {
 .nav-link {
   text-decoration: none;
   font-size: 1.2em;
-  color: #010194;
+  color: #686868;
+  font-weight: 500;
+}
+
+.nav-link:hover {
+  color: #353535;
 }
