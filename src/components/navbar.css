@@ -1,0 +1,22 @@
+.header-layout {
+  display: flex;
+  justify-content: space-between;
+  padding: 2em;
+  align-items: center;
+}
+
+nav {
+  width: 40%;
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+}
+
+.nav-link {
+  text-decoration: none;
+  font-size: 1.2em;
+  color: #010194;
+}

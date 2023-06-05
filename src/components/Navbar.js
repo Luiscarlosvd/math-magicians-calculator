@@ -1,20 +1,23 @@
 import { NavLink } from 'react-router-dom';
+import './navbar.css';
 
 const Navbar = () => (
-  <header>
+  <header className="header-layout">
     <div>
       <h1>Math Magicians</h1>
     </div>
     <nav>
-      <ul>
+      <ul className="navbar-links">
         <li>
-          <NavLink to="/">Home</NavLink>
+          <NavLink to="/" className="nav-link">Home</NavLink>
         </li>
+        <span>&#124;</span>
         <li>
-          <NavLink to="calculator">Calculator</NavLink>
+          <NavLink to="calculator" className="nav-link">Calculator</NavLink>
         </li>
+        <span>&#124;</span>
         <li>
-          <NavLink to="quote">Quote</NavLink>
+          <NavLink to="quote" className="nav-link">Quote</NavLink>
         </li>
       </ul>
     </nav>
