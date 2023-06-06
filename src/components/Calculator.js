@@ -22,9 +22,12 @@ function Calculator() {
     return show;
   };
   return (
-    <div className="calculator-container">
-      <div className="div-result">{showResult(result.total, result.next, result.operation)}</div>
-      <ButtonsSection onClick={handleValue} />
+    <div className="calculator-section-container">
+      <h2>Let&apos;s do some Math</h2>
+      <div className="calculator-container">
+        <div className="div-result">{showResult(result.total, result.next, result.operation)}</div>
+        <ButtonsSection onClick={handleValue} />
+      </div>
     </div>
   );
 }
