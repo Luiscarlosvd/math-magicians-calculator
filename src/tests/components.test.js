@@ -1,5 +1,5 @@
-import React from 'react'
-import { render, fireEvent, screen } from '@testing-library/react'
+import React from 'react';
+import { render, fireEvent, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import axios from 'axios';
 import ButtonsSection from '../components/ButtonsSection';
@@ -57,7 +57,7 @@ describe('Calculator', () => {
     fireEvent.click(getByText('2'));
     fireEvent.click(getByText('='));
     const resultElement = document.querySelector('.div-result');
-    
+
     // Assert
     expect(resultElement).toHaveTextContent(expectedValue);
   });
@@ -68,10 +68,10 @@ describe('Calculator', () => {
 describe('GetQuote', () => {
   afterEach(() => {
     jest.restoreAllMocks();
-  })
+  });
   test('should display loading text on the screen when waiting for api response', () => {
     // Arrange
-    jest.spyOn(axios, 'get').mockImplementation(() => new Promise(() => {}))
+    jest.spyOn(axios, 'get').mockImplementation(() => new Promise(() => {}));
     // Act
     render(<GetQuote />);
 
@@ -90,13 +90,13 @@ describe('GetQuote', () => {
         },
       ],
     };
-    jest.spyOn(axios, 'get').mockResolvedValue(responseQuote)
+    jest.spyOn(axios, 'get').mockResolvedValue(responseQuote);
 
     // Act
     render(<GetQuote />);
 
     // Assert
-    const quoteText = await screen.findByText(`“Hello” - Luis`);
+    const quoteText = await screen.findByText('“Hello” - Luis');
     expect(quoteText).toBeInTheDocument();
   });
 

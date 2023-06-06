@@ -65,6 +65,6 @@ describe('operate', () => {
     const operation = '$';
 
     // Act and Assert
-    expect(() => operate(numberOne, numberTwo, operation)).toThrowError(`Unknown operation '$'`);
+    expect(() => operate(numberOne, numberTwo, operation)).toThrowError('Unknown operation \'$\'');
   });
 });
