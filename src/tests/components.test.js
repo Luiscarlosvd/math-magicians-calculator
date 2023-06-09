@@ -5,6 +5,12 @@ import axios from 'axios';
 import ButtonsSection from '../components/ButtonsSection';
 import Calculator from '../components/Calculator';
 import GetQuote from '../components/GetQuote';
+import Navbar from '../components/Navbar';
+import { MemoryRouter } from 'react-router-dom';
+import Home from '../components/Home';
+import Navbarlayout from '../components/navbarlayout';
+
+
 
 // ButtonSection component tests
 
@@ -111,4 +117,37 @@ describe('GetQuote', () => {
     const errorMessage = await screen.findByText('Sorry... We are experiencing some errors..');
     expect(errorMessage).toBeInTheDocument();
   });
+
+
+
+  //  TEST IF NAVBAR IS RENDERED WITHOUT ERRORS
+  test('renders Navbar component without errors', () => {
+    render(
+      <MemoryRouter>
+        <Navbar />
+      </MemoryRouter>
+    );
+  });
+
+  //  TEST IF HOME IS RENDERED WITHOUT ERRORS
+  test('renders Navbar component without errors', () => {
+    render(
+      <MemoryRouter>
+        <Home />
+      </MemoryRouter>
+    );
+  });
+
+  //  TEST IF NAVBAR LAYOUT IS RENDERED WITHOUT ERRORS
+  test('renders Navbar component without errors', () => {
+    render(
+      <MemoryRouter>
+        <Navbarlayout />
+      </MemoryRouter>
+    );
+  });
+
+
+
 });
+
