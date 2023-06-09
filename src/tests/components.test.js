@@ -2,15 +2,12 @@ import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 import axios from 'axios';
+import { BrowserRouter } from 'react-router-dom';
 import ButtonsSection from '../components/ButtonsSection';
 import Calculator from '../components/Calculator';
 import GetQuote from '../components/GetQuote';
 import Navbar from '../components/Navbar';
-import { MemoryRouter } from 'react-router-dom';
 import Home from '../components/Home';
-import Navbarlayout from '../components/navbarlayout';
-
-
 
 // ButtonSection component tests
 
@@ -117,37 +114,51 @@ describe('GetQuote', () => {
     const errorMessage = await screen.findByText('Sorry... We are experiencing some errors..');
     expect(errorMessage).toBeInTheDocument();
   });
-
-
-
-  //  TEST IF NAVBAR IS RENDERED WITHOUT ERRORS
-  test('renders Navbar component without errors', () => {
-    render(
-      <MemoryRouter>
-        <Navbar />
-      </MemoryRouter>
-    );
-  });
-
-  //  TEST IF HOME IS RENDERED WITHOUT ERRORS
-  test('renders Navbar component without errors', () => {
-    render(
-      <MemoryRouter>
-        <Home />
-      </MemoryRouter>
-    );
-  });
-
-  //  TEST IF NAVBAR LAYOUT IS RENDERED WITHOUT ERRORS
-  test('renders Navbar component without errors', () => {
-    render(
-      <MemoryRouter>
-        <Navbarlayout />
-      </MemoryRouter>
-    );
-  });
-
-
-
 });
 
+//  TEST IF NAVBAR IS RENDERED WITHOUT ERRORS
+describe('Navbar', () => {
+  test('renders Navbar component without errors', () => {
+    // Arrange
+    // Act
+    render(
+      <BrowserRouter>
+        <Navbar />
+      </BrowserRouter>,
+    );
+
+    // Assert
+    expect(screen.getByText('Home')).toBeInTheDocument();
+    expect(screen.getByText('Calculator')).toBeInTheDocument();
+    expect(screen.getByText('Quote')).toBeInTheDocument();
+  });
+
+  test('should have the correct href attribute for each link', () => {
+    // Arrange
+    const { getByText } = render(
+      <BrowserRouter>
+        <Navbar />
+      </BrowserRouter>,
+    );
+
+    // Act
+    const homeLink = getByText('Home');
+    const calculatorLink = getByText('Calculator');
+    const quoteLink = getByText('Quote');
+
+    // Assert
+    expect(homeLink).toHaveAttribute('href', '/');
+    expect(calculatorLink).toHaveAttribute('href', '/calculator');
+    expect(quoteLink).toHaveAttribute('href', '/quote');
+  });
+});
+
+//  TEST IF HOME IS RENDERED WITHOUT ERRORS
+test('renders Home component without errors', () => {
+  // Arrange
+  // Act
+  const { container } = render(<Home />);
+
+  // Assert
+  expect(container.firstChild).toMatchSnapshot();
+});

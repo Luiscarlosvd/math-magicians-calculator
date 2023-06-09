@@ -1,5 +1,6 @@
 import Big from 'big.js';
 import operate from '../logic/operate';
+import calculate from '../logic/calculate';
 
 describe('operate', () => {
   test('return the correct result for addition', () => {
@@ -66,5 +67,43 @@ describe('operate', () => {
 
     // Act and Assert
     expect(() => operate(numberOne, numberTwo, operation)).toThrowError('Unknown operation \'$\'');
+  });
+});
+
+describe('calculate', () => {
+  test('update next when a button is pressed', () => {
+    // Arrange & Act
+    const result = calculate(
+      {
+        total: '23',
+        next: '68',
+        operation: '-',
+      },
+      '4',
+    );
+
+    // Assert
+    expect(result).toEqual({
+      total: '23',
+      next: '684',
+      operation: '-',
+    });
+  });
+
+  test('Clear values from calculator when AC is pressed', () => {
+    const result = calculate(
+      {
+        total: '23',
+        next: '34',
+        operation: '%',
+      },
+      'AC',
+    );
+
+    expect(result).toEqual({
+      total: null,
+      next: 0,
+      operation: null,
+    });
   });
 });
